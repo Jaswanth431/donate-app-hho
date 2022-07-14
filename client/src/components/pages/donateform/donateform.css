@@ -1,0 +1,35 @@
+.form-box{
+    padding:3rem;
+    background-color:#fff ;
+    border-radius: 5px;
+    max-width: 40rem;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.element-box{
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.element-box label{
+    font-size: 1.6rem;
+}
+
+.element-box input{
+    height: 3rem;   
+    outline: none;
+    font-size: 1.6rem;
+}
+
+.donate-form-btn{
+    background-color: #d80032;
+    height: 3rem;
+    font-size: 1.6rem;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    margin-top: 1rem;
+    cursor: pointer;
+}

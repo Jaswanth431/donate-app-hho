@@ -1,0 +1,8 @@
+/* Main page styles */  
+.main{
+    flex-grow: 1;
+    /* background-color: rgb(219, 219, 219);
+     */
+    background-image: linear-gradient(to bottom right,#eb2f64, #d80032, #BA265D);
+
+}

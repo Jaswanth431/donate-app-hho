@@ -1,0 +1,55 @@
+.post-box{
+    padding:2rem 3rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}   
+
+
+.post-header-box{
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    margin-bottom: 1rem;
+    display: flex;
+}
+
+.post-header-box h1{
+    font-size:2rem;
+    width:70%;
+
+}
+
+.posted-date{
+    margin-left:auto;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+.post-box .post-body{
+    font-size: 1.6rem;
+    color: gray;
+    margin-bottom: 1rem;
+}
+
+.posted-date span{
+    display: inline-block;
+    width:1.6rem;
+    height: 1.6rem;
+    margin-right:1rem;
+}
+
+.posted-date img{
+    width:100%;
+    height:100%;
+
+}
+
+.single-post{
+    margin-left:auto;
+    margin-right: auto;
+    padding:3rem 7rem;
+    text-align: justify;
+}
+
+.single-post .post-body{
+    margin-top:2rem;
+}
