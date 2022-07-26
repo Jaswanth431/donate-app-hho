@@ -1,22 +1,51 @@
-import React from "react";
+import React, {Fragment} from "react";
 import MAIN from "../../utilities/main";
+
 import './allposts-main.css';
 import calendersvg from '../../../resources/calender.svg';
+import {ReactComponent as LOADINGRING } from '../../../resources/loadingring1.svg'
+import {useParams } from 'react-router-dom';
+import { getPostByTitle } from "../../../api/index";
+import {useState, useEffect} from 'react';
+import timeSince from '../../utilities/generalFunction';
+
+
+
 const POST = ()=>{
+    const {postid} = useParams();
+    const [postData, setData] = useState(null);
+
+    const getData = async ()=>{
+         let data = await getPostByTitle(postid);
+         setData(data);
+    }
+     
+    useEffect(()=>{
+          getData();
+    }, []);
+
+
     return (
         <MAIN>
              <section className="row">
                 <div className="post-box single-post">
+
+                    {!postData && <LOADINGRING/>}
+                    {!!postData && postData.size == 0 && <h1 className="post-not-found">The post you are looking for does not exist !!</h1>}
+                    {!!postData &&  postData.size !=0 &&
+                    <Fragment>
+                        <div className="post-header-box">
+                            <h1>{postData.docs[0].heading}</h1>
+                            <p className="posted-date"><span><img src={calendersvg}/></span>Posted {timeSince(postData.docs[0].date)} ago   </p>
+                        </div> 
+                        <p className="post-body" dangerouslySetInnerHTML={{ __html: postData.docs[0].body}}>
+                        
+                        </p>
+                    </Fragment>
+                    }
                     
-                    <div className="post-header-box">
-                        <h1>This is the heading   heading heading heading heading heading heading heading heading heading headingof the post</h1>
-                        <p className="posted-date"><span><img src={calendersvg}/></span>Posted 2 years ago</p>
-                    </div>
                     
-                    <p className="post-body">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+                    
                    
                 </div>
              </section>

@@ -1,0 +1,45 @@
+.details-box{
+    background-color: white;
+    /* width:40rem;
+    height:60rem; */
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    border-radius: 5px;
+    padding:2rem 2rem;
+    /* display: inline-block; */
+    /* margin:0 auto; */
+}
+
+.section-trans-details{
+    display: flex;
+    justify-content: center;
+    max-height: 100%;
+}
+
+.details-box h1{
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+
+}
+
+.details-box table{
+    border-collapse: collapse;
+    table-layout:fixed;
+    width:100%;
+    
+}
+
+table, td, tr{
+    border:1px solid;
+    font-size: 1.6rem;
+    padding:1rem;
+    font-weight: 400;
+}
+td{
+    word-wrap:break-word
+}
+
+td:first-child{
+    min-width: 20rem;
+    font-weight: bold;
+}

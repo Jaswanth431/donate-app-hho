@@ -1,0 +1,14 @@
+.section-donatedto{
+    display: flex;
+    justify-content: center;
+}
+
+.donatedto-box{
+    padding: 3rem;
+    background-color: #fff;
+    border-radius: 5px;
+
+}
+
+
+

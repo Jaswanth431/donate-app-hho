@@ -1,12 +1,12 @@
 import React from "react";
 import './overview.css';
-const OVERVIEW=()=>{
+const OVERVIEW=(props)=>{
     return (
         <section className="section-overview row">
             <h1>Overview</h1>
             <div className="hr-line-1"></div>
             <div className="overview-box">
-                <div className="total-money">
+                <div className="total-money overview-box-child">
                     <div className="svg-box">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                             width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
@@ -64,9 +64,9 @@ const OVERVIEW=()=>{
                         
                     </div>
                     <h3>Total money recieved</h3>
-                    <h3  className="amount">+1,000,000</h3>
+                    <h3  className="amount">{`+${props.receivedMoney}`}</h3>
                 </div>
-                <div className="total-spent">
+                <div className="total-spent overview-box-child">
                     <div className="svg-box">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                         width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
@@ -124,9 +124,9 @@ const OVERVIEW=()=>{
                        </svg>
                     </div>
                     <h3>Total money Donated</h3>
-                    <h3 className="amount">-1,000,000</h3>
+                    <h3 className="amount">{`-${props.spentMoney}`}</h3>
                 </div>
-                <div className="current-balance">
+                <div className="current-balance overview-box-child">
                     <div className="svg-box">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                         width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
@@ -192,7 +192,7 @@ const OVERVIEW=()=>{
                        </svg>
                     </div>
                     <h3>Current balance</h3>
-                    <h3 className="amount">1,000,000</h3>
+                    <h3 className="amount">{`+${props.remainingMoney}`}</h3>
                 </div>
             </div>
         </section>

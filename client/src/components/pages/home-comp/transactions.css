@@ -12,9 +12,10 @@
     margin-right: 4rem;
     background-color: #fff;
     border-radius: 1rem;
+    /* min-width: 50rem; */
 }
 
-.donation-spent{
+.donation-spent{ 
     /* height:60rem; */
     /* flex:1; */
     background-color: #fff;
@@ -25,9 +26,10 @@
     font-size:2rem;
     letter-spacing: 1px;
     text-align: center;
-    margin:1rem 0;
+    margin:1rem 5rem;
     display: inline-block;
     border-bottom: 2px solid #000;
+    
 }
 
 .trans-header-box{
@@ -99,4 +101,27 @@
 
 .more-info-btn{
     margin-left: 2rem;
+}
+
+.loading-box{
+    width:15rem;
+    height: 15rem;
+    margin: 5rem auto;
+}
+
+@media only screen and (max-width: 768px){
+    .transaction-box{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .transaction-box-child{
+        margin-bottom:3rem;
+    }
+
+    .donation-recieved{
+        margin-right: 0;
+    }
+
+    
 }

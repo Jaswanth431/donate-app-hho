@@ -26,7 +26,7 @@
 }
 .post-box .post-body{
     font-size: 1.6rem;
-    color: gray;
+    color: rgb(70, 70, 70);
     margin-bottom: 1rem;
 }
 
@@ -52,4 +52,32 @@
 
 .single-post .post-body{
     margin-top:2rem;
+}
+
+.post-not-found{
+    text-align: center;
+}
+
+@media only screen and (max-width: 780px){
+    .post-header-box{
+        flex-direction: column;
+    }
+
+    .post-header-box h1{
+        width:100%;
+    }
+
+    .posted-date{
+        margin-left:0;
+    }
+
+    .single-post{
+        padding:2rem 3rem;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .single-post{
+        padding:2rem 2.5rem;
+    }
 }

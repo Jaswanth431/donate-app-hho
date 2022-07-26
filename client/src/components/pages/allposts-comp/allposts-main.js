@@ -2,50 +2,51 @@ import React from "react";
 import MAIN from "../../utilities/main";
 import './allposts-main.css';
 import calendersvg from '../../../resources/calender.svg';
+import timeSince from '../../utilities/generalFunction';
+import { getAllPosts } from "../../../api/index";
+import {useState, useEffect} from 'react';
+import {ReactComponent as LOADINGRING } from '../../../resources/loadingring1.svg';
+import {Link } from 'react-router-dom';
+
 const ALLPOSTS = ()=>{
-    return (
+    const [postData, setData] = useState(null);
+
+    const getData = async ()=>{
+         let data = await getAllPosts();
+         setData(data);
+    }
+     
+    useEffect(()=>{
+          getData();
+    }, []);
+
+
+    let allPosts = [];
+    if(!!postData && postData.size != 0 ) {
+        allPosts = postData.docs.map((item)=> <div  key={item._id}className="post-box">
+                    
+                        <div className="post-header-box">
+                            <h1>{item.heading}</h1>
+                            <p className="posted-date"><span><img src={calendersvg}/></span>Posted {timeSince(item.date)} ago</p>
+                        </div>
+         
+                            <p className="post-body"  dangerouslySetInnerHTML={{ __html: `${item.body.slice(0, 550)} `}}>
+                            {/* {item.body} */}
+                            </p>
+        <Link to={item.url} className="btn btn-special">Read more</Link>
+    </div> );
+    }
+ 
+    return ( 
         <MAIN>
              <section className="row">
-                <div className="post-box">
-                    
-                    <div className="post-header-box">
-                        <h1>This is the heading of the post</h1>
-                        <p className="posted-date"><span><img src={calendersvg}/></span>Posted 2 years ago</p>
-                    </div>
-                    
-                    <p className="post-body">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <a href="#" className="btn btn-special">Read more</a>
-                </div>
-                <div className="post-box">
-                    
-                    <div className="post-header-box">
-                        <h1>This is the heading of the post</h1>
-                        <p className="posted-date"><span><img src={calendersvg}/></span>Posted 2 years ago</p>
-                    </div>
-                    
-                    <p className="post-body">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris ni
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris ni Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris ni
-                    </p>
-                    <a href="#" className="btn btn-special">Read more</a>
-                </div>
-                <div className="post-box">
-                    
-                    <div className="post-header-box">
-                        <h1>This is the heading of the post</h1>
-                        <p className="posted-date"><span><img src={calendersvg}/></span>Posted 2 years ago</p>
-                    </div>
-                    
-                    <p className="post-body">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <a href="#" className="btn btn-special">Read more</a>
-                </div>
+             {!postData && <div className="post-box"><LOADINGRING/> </div>}
+             {!!postData && postData.size == 0 && <div className="post-box"><h1 className="post-not-found">No posts found</h1></div>}
+             {!!postData && postData.size>0 && allPosts};
+               
              </section>
         </MAIN>
     );
 }
-
+    
 export default ALLPOSTS ; 

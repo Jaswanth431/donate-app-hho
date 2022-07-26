@@ -95,23 +95,26 @@ const DONATEFORM = () => {
 
     <MAIN>
      <section className="row">
-            <form className="form-box"  action="http://localhost:5000/paynow" method="post">
+        {/* //action in development: http://localhost:5000/payments/paynow
+           //action in  production :https://helpinghandsorganization.herokuapp.com/paynow
+         */}
+            <form className="form-box"  action="https://helpinghandsorganization.herokuapp.com/payments/paynow" method="post">
                 <div className="element-box">
                     <label>Your Name:</label>
-                    <input type="text" name="name" ref={elementName}/>
+                    <input type="text" required name="name" ref={elementName}/>
                 </div> 
                 <div className="element-box">
                     <label>Your email:</label>
-                    <input type="text"  name="email" ref={elementEmail}/>
+                    <input type="email" required  name="email" ref={elementEmail}/>
                 </div>
 
                 <div className="element-box">
                     <label>Moblie Number:</label>
-                    <input type="text" name="number"  ref={elementNumber}/>
+                    <input type="number" required name="number"  ref={elementNumber}/>
                 </div>
                 <div className="element-box">
                     <label>Amount:</label>
-                    <input type="text" name="amount"  ref={elementAmount}/>
+                    <input type="number"  required name="amount"  ref={elementAmount}/>
                 </div>
                 <div className="element-box">
                         <button className="donate-form-btn" >Pay Now</button>
